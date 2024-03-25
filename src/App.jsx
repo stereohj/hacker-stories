@@ -36,7 +36,14 @@ function App() {
       <label htmlFor='greeting'>Greeting: </label>
       <input type="text" id="greeting" placeholder='Type a greeting :)'/>
 
-      <h2>{list.map((x) => x.title + " is written by " + x.author + ". ")}</h2>
+      <hr />
+
+      <ul>
+        {list.map(function (x) {
+          return <li key={x.objectID}>{x.title + " => " + x.author}</li>;
+        })}
+      </ul>
+      
 
     </div>
   );
