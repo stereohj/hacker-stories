@@ -8,7 +8,7 @@ const list = [
     num_comments: 3,
     points: 4, 
     objectID: 0
-   },
+       },
    {
     title: 'Redux', 
     url: 'https://redux.js.org/', 
@@ -19,6 +19,7 @@ const list = [
   }
 ]
 
+// Explicit function declaration
 function App() {
   return (
     <div>
@@ -28,28 +29,26 @@ function App() {
       <List />
 
     </div>
-  );
+  )
 }
 
-function List() {
-  return (
-    <ul>
-      {list.map(
-        function (item) {
-          return (
-                  <li key={item.objectID}>
-                      <span><a href={item.url}>{item.title}</a></span>
-                      <span>{item.author}</span>
-                      <span>{item.num_comments}</span>
-                      <span>{item.points}</span>
-                  </li>
-          );
-      })}
-    </ul>
+// Arrow function with concise body declaration without return statement
+const List = () => (
+  <ul>
+    {list.map(
+      (item) => (
+        <li key={item.objectID}>
+            <span><a href={item.url}>{item.title}</a></span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+        </li>
+      ))}
+  </ul>
   );
-}
 
-function Search() {
+// Arrow function with block body (curly brace) declaration
+const Search = () => {
   return (
     <div>
       <label htmlFor='search'>Search: </label>
