@@ -49,10 +49,18 @@ const List = () => (
 
 // Arrow function with block body (curly brace) declaration
 const Search = () => {
+  const handleChange = (event) => {
+    // sythetic event
+    console.log(event);
+    // value of target (here: input HTML element)
+    console.log(event.target.value);
+  }
+
+
   return (
     <div>
       <label htmlFor='search'>Search: </label>
-      <input type="text" id="search" />
+      <input type="text" id="search" onChange={handleChange} />
     </div>
   );
 }
