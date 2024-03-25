@@ -1,51 +1,67 @@
-// import * as React from 'react';
+/* eslint-disable react/prop-types */
 
-const list = [ 
-  {
-    title: 'React', 
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4, 
-    objectID: 0
-       },
-   {
-    title: 'Redux', 
-    url: 'https://redux.js.org/', 
-    author: 'Dan Abramov, Andrew Clark', 
-    num_comments: 2, 
-    points: 5, 
-    objectID: 1
-  }
-]
+// import * as React from 'react';
 
 // Explicit function declaration
 function App() {
+
+  const stories = [ 
+    {
+      title: 'React', 
+      url: 'https://reactjs.org/',
+      author: 'Jordan Walke',
+      num_comments: 3,
+      points: 4, 
+      objectID: 0
+         },
+     {
+      title: 'Redux', 
+      url: 'https://redux.js.org/', 
+      author: 'Dan Abramov, Andrew Clark', 
+      num_comments: 2, 
+      points: 5, 
+      objectID: 1
+    }
+  ]
+
   return (
     <div>
 
       <Search />
       <hr />
-      <List />
+      {/* JSX Comment: Passing stories variable for second level comp List as a attribute */}
+      <List list={stories} />
 
     </div>
   )
 }
 
-// Arrow function with concise body declaration without return statement
-const List = () => (
-  <ul>
-    {list.map(
+// Arrow function with block body (curly brace) declaration
+const List = (props) => {
+  return (
+    <ul>
+    {props.list.map(
       (item) => (
-        <li key={item.objectID}>
-            <span><a href={item.url}>{item.title}</a></span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-        </li>
+        <Item key={item.objectID}  item={item} /> /* JS Comment: Passing item variable for 3rd comp Item*/
       ))}
   </ul>
   );
+}
+
+// JS oneline Comment: Explicit function declaration
+// Direct argument use in 3rd comp Item withou
+function Item(props) {
+  return (
+    <li>
+      <span><a href={props.item.url}>{props.item.title}</a></span>
+      <span>{props.item.author}</span>
+      <span>{props.item.num_comments}</span>
+      <span>{props.item.points}</span>   
+    </li>
+  );
+}
+
+
 
 // Arrow function with block body (curly brace) declaration
 const Search = () => {
